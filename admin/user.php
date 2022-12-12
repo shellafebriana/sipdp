@@ -5,7 +5,7 @@
     <!-- Page Heading -->
     <div class="d-sm-flex align-items-center justify-content-between mb-4">
         <h1 class="h3 mb-0 text-gray-800">User</h1>
-        <a href="tambahuser.php" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm">
+        <a href="tambah-user.php" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm">
             <i class="fa-solid fa-plus fa-sm text-white-50"></i>
             Tambah User
         </a>
@@ -33,12 +33,12 @@
                         </tr>
                     </tfoot>
                     <tbody>
-                        <?php 
-                            include '../assets/php/koneksi.php';
+                        <?php
+                        include '../assets/php/koneksi.php';
 
-                            $no = 1;
-                            $data = mysqli_query($koneksi, "SELECT * FROM user");
-                            while($d = mysqli_fetch_array($data)){
+                        $no = 1;
+                        $data = mysqli_query($koneksi, "SELECT * FROM user");
+                        while ($d = mysqli_fetch_array($data)) {
                         ?>
                             <tr>
                                 <td><?php echo $no++; ?></td>
@@ -53,7 +53,13 @@
                                     </a>
                                 </td>
                             </tr>
+<<<<<<< HEAD
                         <?php } ?>
+=======
+                        <?php
+                        }
+                        ?>
+>>>>>>> 5df9f5566509c9003b08e8e4a9928dd2517d35fe
                     </tbody>
                 </table>
             </div>
