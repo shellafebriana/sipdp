@@ -8,26 +8,26 @@ include '../sub/head.php';
     <h1 class="h3 mb-4 text-gray-800">Form Tambah User</h1>
     <div class="card shadow mb-4">
         <div class="card-body">
-            <form>
+            <form method="post" action="../assets/php/user/aksi-tambah.php">
                 <div class="form-group">
-                    <label for="username">username</label>
-                    <input type="text" class="form-control" id="user" placeholder="username">
+                    <label for="username">Username</label>
+                    <input type="text" class="form-control" name="username" placeholder="username" autocomplete="off">
                 </div>
                 <div class="form-group">
                     <label for="password">Password</label>
-                    <input type="pasword" class="form-control" id="user" placeholder="password">
+                    <input type="password" class="form-control" name="password" placeholder="password">
                 </div>
                 <div class="form-group">
                     <label for="level">Level User</label>
-                    <select class="form-control" id="level">
+                    <select class="form-control" name="level_user">
                         <option>Pilih User</option>
                         <option>Admin</option>
                         <option>Manajer</option>
                         <option>Bos</option>
                     </select>
                 </div>
+            <input type="submit" class="btn btn-info" style="float: right;" value="simpan">
             </form>
-            <button type="button" class="btn btn-info" style="float: right;">Kirim</button>
         </div>
     </div>
 </div>
