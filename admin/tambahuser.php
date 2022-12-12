@@ -1,5 +1,5 @@
 <?php
-    include 'sub/head.php';
+include '../sub/head.php';
 ?>
 
 <!-- Begin Page Content -->
@@ -20,10 +20,10 @@
                 <div class="form-group">
                     <label for="level">Level User</label>
                     <select class="form-control" id="level">
-                    <option>Pilih User</option>
-                    <option>Admin</option>
-                    <option>Manajer</option>
-                    <option>Bos</option>
+                        <option>Pilih User</option>
+                        <option>Admin</option>
+                        <option>Manajer</option>
+                        <option>Bos</option>
                     </select>
                 </div>
             </form>
@@ -36,5 +36,5 @@
 <!-- End of Main Content -->
 
 <?php
-    include 'sub/footer.php';
+include '../sub/footer.php';
 ?>
