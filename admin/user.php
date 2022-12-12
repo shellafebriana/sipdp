@@ -20,7 +20,7 @@
                         <tr>
                             <th>No</th>
                             <th>Username</th>
-                            <th>Password</th>
+                            <th>Level User</th>
                             <th>Aksi</th>
                         </tr>
                     </thead>
@@ -28,24 +28,34 @@
                         <tr>
                             <th>No</th>
                             <th>Username</th>
-                            <th>Waktu Pelaksanaan</th>
+                            <th>Level User</th>
                             <th>Aksi</th>
                         </tr>
                     </tfoot>
                     <tbody>
-                        <tr>
-                            <td>Tiger Nixon</td>
-                            <td>System Architect</td>
-                            <td>Edinburgh</td>
-                            <td>
-                                <a href="#" class="btn btn-warning btn-circle">
-                                    <i class="fa-regular fa-pen-to-square"></i>
-                                </a>
-                                <a href="#" class="btn btn-danger btn-circle">
-                                    <i class="fa-solid fa-trash-can"></i>
-                                </a>
-                            </td>
-                        </tr>
+                        <?php 
+                            include '../assets/php/koneksi.php';
+
+                            $no = 1;
+                            $data = mysqli_query($koneksi, "SELECT * FROM user");
+                            while($d = mysqli_fetch_array($data)){
+                        ?>
+                            <tr>
+                                <td><?php echo $no++; ?></td>
+                                <td><?php echo $d['username']; ?></td>
+                                <td><?php echo $d['level_user']; ?></td>
+                                <td>
+                                    <a href="edit.php?id=<?php echo $d['id']; ?>" class="btn btn-warning btn-circle">
+                                        <i class="fa-regular fa-pen-to-square"></i>
+                                    </a>
+                                    <a href="hapus.php?id=<?php echo $d['id']; ?>" class="btn btn-danger btn-circle">
+                                        <i class="fa-solid fa-trash-can"></i>
+                                    </a>
+                                </td>
+                            </tr>
+                        <?php
+                            }
+                        ?>
                     </tbody>
                 </table>
             </div>
