@@ -26,7 +26,7 @@ include '../sub/head.php';
                         <option>Bos</option>
                     </select>
                 </div>
-            <input type="submit" class="btn btn-info" style="float: right;" value="simpan">
+            <input type="submit" class="btn btn-primary" style="float: right;" value="Simpan">
             </form>
         </div>
     </div>

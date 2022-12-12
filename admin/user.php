@@ -45,17 +45,15 @@
                                 <td><?php echo $d['username']; ?></td>
                                 <td><?php echo $d['level_user']; ?></td>
                                 <td>
-                                    <a href="edit.php?id=<?php echo $d['id']; ?>" class="btn btn-warning btn-circle">
+                                    <a href="edit-user.php?id-user=<?php echo $d['id_user']; ?>" class="btn btn-warning btn-circle">
                                         <i class="fa-regular fa-pen-to-square"></i>
                                     </a>
-                                    <a href="hapus.php?id=<?php echo $d['id']; ?>" class="btn btn-danger btn-circle">
+                                    <a href="#" class="btn btn-danger btn-circle">
                                         <i class="fa-solid fa-trash-can"></i>
                                     </a>
                                 </td>
                             </tr>
-                        <?php
-                            }
-                        ?>
+                        <?php } ?>
                     </tbody>
                 </table>
             </div>
