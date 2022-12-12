@@ -1,4 +1,4 @@
-<?php include 'sub/head.php'; ?>
+<?php include '../sub/head.php'; ?>
 <!-- Begin Page Content -->
 <div class="container-fluid">
 
@@ -59,4 +59,4 @@
 
 </div>
 <!-- End of Main Content -->
-<?php include 'sub/footer.php'; ?>
+<?php include '../sub/footer.php'; ?>

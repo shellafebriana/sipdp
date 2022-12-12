@@ -1,5 +1,5 @@
 <?php
-    include 'sub/head.php';
+include '../sub/head.php';
 ?>
 
 <div class="container-fluid">
@@ -46,5 +46,5 @@
 <!-- /.container-fluid -->
 
 <?php
-    include 'sub/footer.php';
+include '../sub/footer.php';
 ?>
