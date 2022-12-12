@@ -43,7 +43,7 @@ $d = mysqli_fetch_array($data);
                         <input type="number" class="form-control" id="nilai" name="nilai_kontrak" placeholder="input nilai kontrak" autocomplete="off" value="<?= $d['nilai_kontrak'] ?>">
                     </div>
                 </div>
-                <input type="submit" class="btn btn-info" style="float: right;" value="Kirim">
+                <input type="submit" class="btn btn-warning" style="float: right;" value="Simpan">
             </form>
         </div>
     </div>

@@ -38,7 +38,7 @@ include '../sub/head.php';
                         <input type="number" class="form-control" id="nilai" name="nilai_kontrak" placeholder="input nilai kontrak" autocomplete="off">
                     </div>
                 </div>
-                <input type="submit" class="btn btn-info" style="float: right;" value="Kirim">
+                <input type="submit" class="btn btn-primary" style="float: right;" value="Simpan">
             </form>
         </div>
     </div>
