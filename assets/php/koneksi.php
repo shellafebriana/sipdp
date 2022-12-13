@@ -30,3 +30,18 @@ function tgl_indo($tanggal)
 
     return $pecahkan[2] . ' ' . $bulan[(int)$pecahkan[1]] . ' ' . $pecahkan[0];
 }
+
+function rupiah($angka)
+{
+
+    $hasil_rupiah = "Rp " . number_format($angka, 2, ',', '.');
+    return $hasil_rupiah;
+}
+
+function kembali()
+{
+    $previous = "javascript:history.go(-1)";
+    if (isset($_SERVER['HTTP_REFERER'])) {
+        $previous = $_SERVER['HTTP_REFERER'];
+    }
+}
