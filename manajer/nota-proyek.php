@@ -113,20 +113,23 @@ $d = mysqli_fetch_array($data);
                     <tbody>
                         <?php
                         $no = 1;
-                        $data   = mysqli_query($koneksi, "SELECT * FROM nota");
-                        while ($d = mysqli_fetch_array($data)) {
+                        $data   = mysqli_query($koneksi, "SELECT * FROM nota_proyek JOIN nota ON nota_proyek.id_nota = nota.id_nota WHERE id_proyek = $id ");
+                        while ($n = mysqli_fetch_array($data)) {
                         ?>
                             <tr>
                                 <td><?= $no++; ?></td>
-                                <td><?= $d['uraian']; ?></td>
-                                <td><?= $d['biaya_pengeluaran']; ?></td>
-                                <td><?= $d['keterangan']; ?></td>
+                                <td><?= $n['uraian']; ?></td>
+                                <td><?= $n['biaya_pengeluaran']; ?></td>
+                                <td><?= $n['keterangan']; ?></td>
                                 <td>
-                                    <a href="edit-nota.php?id-nota=<?= $d['id_nota']; ?>" class="btn btn-warning btn-circle">
+                                    <a href="edit-nota.php?id-nota=<?= $n['id_nota']; ?>" class="btn btn-warning btn-circle">
                                         <i class="fa-regular fa-pen-to-square"></i>
                                     </a>
-                                    <a href="../assets/php/nota/aksi-hapus.php?id-nota=<?= $d['id_nota']; ?>" class="btn btn-danger btn-circle">
+                                    <a href="../assets/php/nota/aksi-hapus.php?id-nota=<?= $n['id_nota']; ?>" class="btn btn-danger btn-circle">
                                         <i class="fa-solid fa-trash-can"></i>
+                                    </a>
+                                    <a href="detail-nota.php?id-nota=<?= $n['id_nota']; ?>" class="btn btn-info btn-circle">
+                                        <i class="fa-solid fa-info"></i>
                                     </a>
                                 </td>
                             </tr>
