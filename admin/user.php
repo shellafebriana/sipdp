@@ -48,7 +48,7 @@
                                     <a href="edit-user.php?id-user=<?php echo $d['id_user']; ?>" class="btn btn-warning btn-circle">
                                         <i class="fa-regular fa-pen-to-square"></i>
                                     </a>
-                                    <a href="#" class="btn btn-danger btn-circle">
+                                    <a href="aksi-delete.php?id-user=<?php echo $d['id_user']; ?>" class="btn btn-danger btn-circle">
                                         <i class="fa-solid fa-trash-can"></i>
                                     </a>
                                 </td>
