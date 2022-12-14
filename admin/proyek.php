@@ -53,6 +53,9 @@
                                     <a href="../assets/php/proyek/aksi-hapus.php?id-proyek=<?= $d['id_proyek']; ?>" class="btn btn-danger btn-circle">
                                         <i class="fa-solid fa-trash-can"></i>
                                     </a>
+                                    <a href="nota-proyek.php?id-proyek=<?= $d['id_proyek']; ?>" class="btn btn-info btn-circle">
+                                        <i class="fa-solid fa-info"></i>
+                                    </a>
                                 </td>
                             </tr>
                         <?php } ?>

@@ -39,7 +39,7 @@
                         </select>
                     </div>
                 </div>
-                <input type="submit" value="Print" class="btn btn-primary" role="button">
+                <input type="submit" value="Print" class="btn btn-primary" style="float:right" role="button">
             </form>
         </div>
     </div>
