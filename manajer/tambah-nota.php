@@ -1,5 +1,5 @@
 <?php
-    include 'sub/head.php';
+    include '../sub/head.php';
 ?>
 
 <!-- Begin Page Content -->
@@ -61,5 +61,5 @@
 <!-- End of Main Content -->
 
 <?php
-    include 'sub/footer.php';
+    include '../sub/footer.php';
 ?>
