@@ -1,29 +1,33 @@
 <?php 
-
+ 
 include 'assets/php/koneksi.php';
-
-error_reporting(0);
-
+ 
 session_start();
 
+error_reporting(0);
+ 
 if (isset($_SESSION['username'])) {
     header("Location: admin/dashboard.php");
 }
-
+ 
 if (isset($_POST['submit'])) {
-	$username = $_POST['username'];
-	$password = md5($_POST['password']);
-
-	$result = mysqli_query($koneksi, "SELECT * FROM user WHERE username='$username' AND password='$password'");
-	if ($result->num_rows > 0) {
-		$row = mysqli_fetch_assoc($result);
-		$_SESSION['username'] = $row['username'];
-		header("Location: admin/dashboard.php");
-	} else {
-		echo "<script>alert('Username atau Password Anda salah. Silahkan coba lagi!')</script>";
-	}
+    $username = $_POST['username'];
+    $password = md5($_POST['password']);
+ 
+    $sql = "SELECT * FROM user WHERE username='$username' AND password='$password'";
+    $result = mysqli_query($koneksi, $sql);
+    // var_dump ($result);
+    // die;
+    
+    if ($result->num_rows > 0) {
+        $row = mysqli_fetch_assoc($result);
+        $_SESSION['username'] = $row['username'];
+        header("Location: admin/dashboard.php");
+    } else {
+        echo "<script>alert('Username atau Password Anda salah. Silahkan coba lagi!')</script>";
+    }
 }
-
+ 
 ?>
 
 <!DOCTYPE html>
@@ -124,10 +128,10 @@ if (isset($_POST['submit'])) {
         <form action="" method="POST" class="login-username">
             <p class="login-text" style="font-size: 2rem; font-weight: 800;">Login</p>
             <div class="input-group">
-                <input type="text" name="username" placeholder="username" value="<?php echo $username; ?>" autocomplete="off" required>
+                <input type="text" placeholder="username" name="username" value="<?php echo $username ?>" autocomplete="off" required>
             </div>
             <div class="input-group">
-                <input type="password" name="password" placeholder="password" value="<?php echo $_POST['password']; ?>" autocomplete="off" required>
+                <input type="password" placeholder="password" name="password" value="<?php echo $_POST['password']; ?>" autocomplete="off" required>
             </div>
             <div class="input-group">
                 <button name="submit" class="btn">LogIn</button>
@@ -135,4 +139,7 @@ if (isset($_POST['submit'])) {
         </form>
     </div>
 </body>
+
+
+
 </html>
