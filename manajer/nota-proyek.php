@@ -13,6 +13,11 @@ $d = mysqli_fetch_array($proyek);
     <div class="d-sm-flex align-items-center justify-content-between mb-4">
         <h1 class="h3 mb-0 text-gray-800">Detail Proyek</h1>
         <div class="d-none d-sm-inline-block ">
+
+            <a href="tambah-nota.php?id-proyek=<?= $id ?>" class="btn btn-sm btn-primary shadow-sm">
+                <i class="fa-solid fa-plus fa-sm text-white-50"></i>
+                Tambah Nota
+            </a>
             <a href="proyek.php" class="btn btn-sm btn-danger shadow-sm">
                 <i class="fa-solid fa-caret-left"></i>
                 Kembali
