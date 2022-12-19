@@ -3,7 +3,8 @@ include '../sub/head.php';
 include '../assets/php/koneksi.php';
 
 // GET DETAIL NOTA
-$id = $_GET['id-nota'];
+$id_nota = $_GET['id-nota'];
+$id_proyek = $_GET['id_proyek'];
 ?>
 
 <!-- Begin Page Content -->
