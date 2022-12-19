@@ -4,7 +4,7 @@ include '../assets/php/koneksi.php';
 
 // GET DETAIL NOTA
 $id_nota = $_GET['id-nota'];
-$id_proyek = $_GET['id_proyek'];
+$id_proyek = $_GET['id-proyek'];
 ?>
 
 <!-- Begin Page Content -->
@@ -14,7 +14,7 @@ $id_proyek = $_GET['id_proyek'];
     <div class="d-sm-flex align-items-center justify-content-between mb-4">
         <h1 class="h3 mb-0 text-gray-800">Detail Nota</h1>
         <div class="d-none d-sm-inline-block ">
-            <a href="nota-proyek.php?id-proyek=<?= $n['id_proyek'] ?>" class="btn btn-sm btn-danger shadow-sm">
+            <a href="nota-proyek.php?id-proyek=<?= $id_proyek ?>" class="btn btn-sm btn-danger shadow-sm">
                 <i class="fa-solid fa-caret-left"></i>
                 Kembali
             </a>
