@@ -84,6 +84,19 @@
                     <span>User </span></a>
             </li>
 
+            <!-- Nav Item - Kategori -->
+            <li class="nav-item">
+                <a class="nav-link" href="#">
+                    <i class="fa-solid fa-cube"></i>
+                    <span>Kategori </span></a>
+            </li>
+
+            <!-- Nav Item - Kode -->
+            <li class="nav-item">
+                <a class="nav-link" href="#">
+                    <i class="fa-solid fa-cubes"></i>
+                    <span>Kode </span></a>
+            </li>
             <!-- Divider -->
             <hr class="sidebar-divider d-none d-md-block">
 
