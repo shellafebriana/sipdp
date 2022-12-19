@@ -1,9 +1,10 @@
 <?php
 include '../sub/head.php';
 include '../assets/php/koneksi.php';
+// GET DETAIL PROYEK
 $id = $_GET['id-proyek'];
-$data   = mysqli_query($koneksi, "SELECT * FROM proyek WHERE id_proyek = '$id'");
-$d = mysqli_fetch_array($data);
+$proyek   = mysqli_query($koneksi, "SELECT * FROM proyek WHERE id_proyek = '$id'");
+$d = mysqli_fetch_array($proyek);
 ?>
 <!-- Begin Page Content -->
 <div class="container-fluid">
@@ -12,10 +13,6 @@ $d = mysqli_fetch_array($data);
     <div class="d-sm-flex align-items-center justify-content-between mb-4">
         <h1 class="h3 mb-0 text-gray-800">Detail Proyek</h1>
         <div class="d-none d-sm-inline-block ">
-            <a href="tambah-nota.php" class="btn btn-sm btn-primary shadow-sm">
-                <i class="fa-solid fa-plus fa-sm text-white-50"></i>
-                Tambah Nota
-            </a>
             <a href="proyek.php" class="btn btn-sm btn-danger shadow-sm">
                 <i class="fa-solid fa-caret-left"></i>
                 Kembali
@@ -101,40 +98,39 @@ $d = mysqli_fetch_array($data);
                             <th>Aksi</th>
                         </tr>
                     </thead>
+                    <tbody>
+                        <tr>
+                            <td>1</td>
+                            <td>uraian</td>
+                            <td>biaya</td>
+                            <td>keterangan</td>
+                            <td>
+                                <a href="edit-nota.php?id-proyek=<?= $id ?>&id-nota=<?= $n['id_nota']; ?>" class="btn btn-warning btn-circle">
+                                    <i class="fa-regular fa-pen-to-square"></i>
+                                </a>
+                                <a href="../assets/php/nota/aksi-hapus.php?id-proyek=<?= $id ?>&id-nota=<?= $n['id_nota']; ?>" class="btn btn-danger btn-circle">
+                                    <i class="fa-solid fa-trash-can"></i>
+                                </a>
+                                <a href="detail-nota.php?id-proyek=<?= $id ?>&id-nota=<?= $n['id_nota']; ?>" class="btn btn-info btn-circle">
+                                    <i class="fa-solid fa-info"></i>
+                                </a>
+                            </td>
+                        </tr>
+                    </tbody>
                     <tfoot>
                         <tr>
-                            <th>No</th>
-                            <th>Uraian Nota</th>
-                            <th>Biaya Pengeluaran</th>
-                            <th>Keterangan</th>
-                            <th>Aksi</th>
+                            <th colspan="3">Total Biaya Pengeluaran</th>
+                            <th colspan="2"></th>
+                        </tr>
+                        <tr>
+                            <th colspan="3">Sumber Dana / Nilai Kontrak</th>
+                            <th colspan="2"></th>
+                        </tr>
+                        <tr>
+                            <th colspan="3">Sisa</th>
+                            <th colspan="2"></th>
                         </tr>
                     </tfoot>
-                    <tbody>
-                        <?php
-                        $no = 1;
-                        $data   = mysqli_query($koneksi, "SELECT * FROM nota_proyek JOIN nota ON nota_proyek.id_nota = nota.id_nota WHERE id_proyek = $id ");
-                        while ($n = mysqli_fetch_array($data)) {
-                        ?>
-                            <tr>
-                                <td><?= $no++; ?></td>
-                                <td><?= $n['uraian']; ?></td>
-                                <td><?= $n['biaya_pengeluaran']; ?></td>
-                                <td><?= $n['keterangan']; ?></td>
-                                <td>
-                                    <a href="edit-nota.php?id-nota=<?= $n['id_nota']; ?>" class="btn btn-warning btn-circle">
-                                        <i class="fa-regular fa-pen-to-square"></i>
-                                    </a>
-                                    <a href="../assets/php/nota/aksi-hapus.php?id-nota=<?= $n['id_nota']; ?>" class="btn btn-danger btn-circle">
-                                        <i class="fa-solid fa-trash-can"></i>
-                                    </a>
-                                    <a href="detail-nota.php?id-nota=<?= $n['id_nota']; ?>" class="btn btn-info btn-circle">
-                                        <i class="fa-solid fa-info"></i>
-                                    </a>
-                                </td>
-                            </tr>
-                        <?php } ?>
-                    </tbody>
                 </table>
             </div>
         </div>
