@@ -1,6 +1,7 @@
 <?php
     include '../koneksi.php';
     
+    $id = $_POST['id_proyek'];
     $tanggal = $_POST['tgl'];
     $uraian = $_POST['uraian'];
     $unit = $_POST['unit'];
@@ -16,21 +17,21 @@
     $filename = $_FILES['foto']['name'];
     $ukuran = $_FILES['foto']['size'];
     $ext = pathinfo($filename, PATHINFO_EXTENSION);
-    
-    if(!in_array($ext,$ekstensi) ) {
-        header("location:../../../manajer/tambah-nota.php?alert=gagal_ekstensi");
-    }else{
-        if($ukuran < 15728640){		
-            $xx = $rand.'_'.$filename;
-            move_uploaded_file($_FILES['foto']['tmp_name'], '../../../manajer/gambar/'.$rand.'_'.$filename);
-            // var_dump ("INSERT INTO nota VALUES ('','','','$tanggal','$uraian','$unit','$satuan','$hargasatuan','$biayapengeluaran','$pekerjaan','$keterangan','$xx')");
-            // die;
-            mysqli_query($koneksi, "INSERT INTO nota VALUES ('','','','$tanggal','$uraian','$unit','$satuan','$hargasatuan','$biayapengeluaran','$pekerjaan','$keterangan','$xx')");
-            header("location:../../../manajer/nota-proyek.php?alert=berhasil");
+
+        if(!in_array($ext,$ekstensi) ) {
+            header("location:../../../manajer/tambah-nota.php?alert=gagal_ekstensi");
         }else{
-            header("location:../../../manajer/tambah-nota.php?alert=gagal_ukuran");
+            if($ukuran < 15728640){
+                $xx = $rand.'_'.$filename;
+                move_uploaded_file($_FILES['foto']['tmp_name'], '../img/nota/'.$rand.'_'.$filename);
+                // var_dump ("INSERT INTO nota VALUES ('','','','$tanggal','$uraian','$unit','$satuan','$hargasatuan','$biayapengeluaran','$pekerjaan','$keterangan','$xx')");
+                // die;
+                mysqli_query($koneksi, "INSERT INTO nota VALUES ('','','','$tanggal','$uraian','$unit','$satuan','$hargasatuan','$biayapengeluaran','$pekerjaan','$keterangan','$xx')");
+                header("location:../../../manajer/nota-proyek.php?id-proyek=$id&alert=berhasil");
+            }else{
+                header("location:../../../manajer/tambah-nota.php?alert=gagal_ukuran");
+            }
         }
-    }
 
     // mysqli_query($koneksi, "INSERT INTO nota VALUES ('','$tanggal','$uraian','$unit','$satuan','$hargasatuan','$biayapengeluaran','$pekerjaan','$keterangan','$scannota')");
 
