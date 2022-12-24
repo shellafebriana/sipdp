@@ -28,7 +28,6 @@ $d = mysqli_fetch_array($proyek);
 
     <!-- Detail Proyek -->
     <div class="row">
-
         <!-- Nama Kegiatan Card  -->
         <div class="col-xl-4 col-md-6 mb-4">
             <div class="card border-left-primary shadow h-100 py-2">
@@ -104,16 +103,21 @@ $d = mysqli_fetch_array($proyek);
                         </tr>
                     </thead>
                     <tbody>
+                    <?php
+                        $no = 1;
+                        $data = mysqli_query($koneksi, "SELECT * FROM nota");
+                        while ($d = mysqli_fetch_array($data)) {
+                        ?>
                         <tr>
-                            <td>1</td>
-                            <td>uraian</td>
-                            <td>biaya</td>
-                            <td>keterangan</td>
+                            <td><?php echo $no++; ?></td>
+                            <td><?php echo $d['uraian'] ?></td>
+                            <td><?php echo $d['biaya_pengeluaran'] ?></td>
+                            <td><?php echo $d['keterangan'] ?></td>
                             <td>
-                                <a href="edit-nota.php?id-proyek=<?= $id ?>&id-nota=<?= $n['id_nota']; ?>" class="btn btn-warning btn-circle">
+                                <a href="edit-nota.php?id-proyek=<?= $id ?>&id-nota=<?= $d['id_nota']; ?>" class="btn btn-warning btn-circle">
                                     <i class="fa-regular fa-pen-to-square"></i>
                                 </a>
-                                <a href="../assets/php/nota/aksi-hapus.php?id-proyek=<?= $id ?>&id-nota=<?= $n['id_nota']; ?>" class="btn btn-danger btn-circle">
+                                <a href="../assets/php/nota/aksi-hapus.php?id-proyek=<?= $id ?>&id-nota=<?= $d['id_nota']; ?>" class="btn btn-danger btn-circle">
                                     <i class="fa-solid fa-trash-can"></i>
                                 </a>
                                 <a href="detail-nota.php?id-proyek=<?= $id ?>&id-nota=<?= $n['id_nota']; ?>" class="btn btn-info btn-circle">
@@ -121,6 +125,7 @@ $d = mysqli_fetch_array($proyek);
                                 </a>
                             </td>
                         </tr>
+                        <?php } ?>
                     </tbody>
                     <tfoot>
                         <tr>

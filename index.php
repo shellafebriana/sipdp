@@ -4,27 +4,54 @@ include 'assets/php/koneksi.php';
  
 session_start();
 
-error_reporting(0);
+// error_reporting(0);
  
 if (isset($_SESSION['username'])) {
     header("Location: admin/dashboard.php");
 }
  
+// Jika tombol login ditekan, maka akan mengirimkan variabel yang berisi username dan password.
 if (isset($_POST['submit'])) {
+
     $username = $_POST['username'];
-    $password = md5($_POST['password']);
- 
-    $sql = "SELECT * FROM user WHERE username='$username' AND password='$password'";
-    $result = mysqli_query($koneksi, $sql);
-    // var_dump ($result);
-    // die;
+    $userpass = $_POST['password']; // password yang di inputkan oleh user lewat form login.
+    // var_dump ("SELECT username, password, level_user FROM user WHERE username = '$username'");
+    die();
+    // Query ke database.
+    $sql = mysqli_query($koneksi, "SELECT username, password, level_user FROM user WHERE username = '$username'");
+
+    list($username, $password, $level) = mysqli_fetch_array($sql);
+
     
-    if ($result->num_rows > 0) {
-        $row = mysqli_fetch_assoc($result);
-        $_SESSION['username'] = $row['username'];
-        header("Location: admin/dashboard.php");
+    // Jika data ditemukan dalam database, maka akan melakukan validasi dengan password_verify.
+    if (mysqli_num_rows($sql) > 0) {
+
+        /*
+            Validasi login dengan password_verify
+            $userpass -----> diambil dari password yang diinputkan user lewat form login
+            $password -----> diambil dari password dalam database
+        */
+        if (password_verify($userpass, $password)) {
+
+            // Buat session baru.
+            session_start();
+            $_SESSION['username'] = $username;
+            $_SESSION['level_user'] = $level;
+
+            // Jika login berhasil, user akan diarahkan ke halaman admin.
+            header("location: admin/dashboard.php");
+            die();
+        } else {
+            echo '<script language="javascript">
+                    window.alert("LOGIN GAGAL!! Silakan coba lagi");
+                    window.location.href="./";
+                  </script>';
+        }
     } else {
-        echo "<script>alert('Username atau Password Anda salah. Silahkan coba lagi!')</script>";
+       echo '<script language="javascript">
+                window.alert("LOGIN GAGAL! Silakan coba lagi");
+                window.location.href="./";
+             </script>';
     }
 }
  
@@ -121,20 +148,18 @@ if (isset($_POST['submit'])) {
     </style>
 </head>
 <body>
-    <div class="alert alert-warning" role="alert">
-        <?php echo $_SESSION['error']?>
-    </div>
+    
     <div class="container">
         <form action="" method="POST" class="login-username">
             <p class="login-text" style="font-size: 2rem; font-weight: 800;">Login</p>
             <div class="input-group">
-                <input type="text" placeholder="username" name="username" value="<?php echo $username ?>" autocomplete="off" required>
+                <input type="text" placeholder="username" name="username" autocomplete="off" required>
             </div>
             <div class="input-group">
-                <input type="password" placeholder="password" name="password" value="<?php echo $_POST['password']; ?>" autocomplete="off" required>
+                <input type="password" placeholder="password" name="password" autocomplete="off" required>
             </div>
             <div class="input-group">
-                <button name="submit" class="btn">LogIn</button>
+                <button type="submit" name="submit" class="btn">LogIn</button>
             </div>
         </form>
     </div>

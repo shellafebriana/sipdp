@@ -40,19 +40,19 @@
                         $data = mysqli_query($koneksi, "SELECT * FROM user");
                         while ($d = mysqli_fetch_array($data)) {
                         ?>
-                            <tr>
-                                <td><?php echo $no++; ?></td>
-                                <td><?php echo $d['username']; ?></td>
-                                <td><?php echo $d['level_user']; ?></td>
-                                <td>
-                                    <a href="edit-user.php?id-user=<?php echo $d['id_user']; ?>" class="btn btn-warning btn-circle">
-                                        <i class="fa-regular fa-pen-to-square"></i>
-                                    </a>
-                                    <a href="../assets/php/user/aksi-hapus.php?id-user=<?php echo $d['id_user']; ?>" class="btn btn-danger btn-circle">
-                                        <i class="fa-solid fa-trash-can"></i>
-                                    </a>
-                                </td>
-                            </tr>
+                        <tr>
+                            <td><?php echo $no++; ?></td>
+                            <td><?php echo $d['username']; ?></td>
+                            <td><?php echo $d['level_user']; ?></td>
+                            <td>
+                                <a href="edit-user.php?id-user=<?php echo $d['id_user']; ?>" class="btn btn-warning btn-circle">
+                                    <i class="fa-regular fa-pen-to-square"></i>
+                                </a>
+                                <a href="../assets/php/user/aksi-hapus.php?id-user=<?php echo $d['id_user']; ?>" class="btn btn-danger btn-circle">
+                                    <i class="fa-solid fa-trash-can"></i>
+                                </a>
+                            </td>
+                        </tr>
                         <?php } ?>
                     </tbody>
                 </table>
