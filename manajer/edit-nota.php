@@ -4,7 +4,6 @@
     $id = $_GET['id-nota'];
     $data = mysqli_query($koneksi,"SELECT * FROM nota JOIN kode ON nota.id_kode = kode.id_kode WHERE id_nota='$id'");
     $d = mysqli_fetch_array($data);
-    // echo $d['nm_kode'];
 ?>
 
 <!-- Begin Page Content -->
@@ -25,7 +24,6 @@
                         <option>Pilih Kategori</option>
                             <?php
                                 // include '../assets/php/koneksi.php';
-
                                 $dk = mysqli_query($koneksi,"SELECT * FROM kategori_nota");
                                 while ($k = mysqli_fetch_array($dk)){
                             ?>
@@ -100,9 +98,11 @@
                 <div class="form-group row">
                     <label for="scannota" class="col-sm-2 col-form-label">Scan Nota</label>
                     <img src="../assets/img/nota/<?php echo $d['gmbr_nota'] ?>" width="150px" height="120px" /></br>
-                    <input type="checkbox" name="ubah_foto" value="true"> Ceklis jika ingin mengubah foto<br>
-                    <input type="file" id="scannota" name="foto" class="form-control">
-                    <p style="color: red" >Ekstensi yang diperbolehkan .png | .jpg | .jpeg | .pdf</p>
+                    <div class="col-sm-10">
+                        <input type="checkbox" name="ubah_foto" value="true"> Ceklis jika ingin mengubah foto<br>
+                        <input type="file" id="scannota" name="foto" class="form-control">
+                        <p style="color: red" >Ekstensi yang diperbolehkan .png | .jpg | .jpeg | .pdf</p>
+                        </div>
                 </div>
             <input type="submit" class="btn btn-primary" style="float: right;" value="Simpan">
             </form>
