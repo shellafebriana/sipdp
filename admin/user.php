@@ -1,3 +1,11 @@
+<?php
+    session_start();
+
+    if(!isset($_SESSION['username'])){
+        header("Location: ../index.php");
+    }
+?>
+
 <?php include '../sub/head.php'; ?>
 <!-- Begin Page Content -->
 <div class="container-fluid">
