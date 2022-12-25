@@ -89,13 +89,13 @@
     </style>
 </head>
 <body>
-<?php 
-	if(isset($_GET['pesan'])){
-		if($_GET['pesan']=="gagal"){
-			echo "<div class='alert'>Username dan Password tidak sesuai !</div>";
-		}
-	}
-	?>
+    <?php
+        if(isset($_GET['pesan'])){
+            if($_GET['pesan']=="gagal"){
+                echo "<div class='alert'>Username dan Password tidak sesuai !</div>";
+            }
+        }
+    ?>
     <div class="container">
         <form action="login.php" method="POST" class="login-username">
             <p class="login-text" style="font-size: 2rem; font-weight: 800;">Login</p>

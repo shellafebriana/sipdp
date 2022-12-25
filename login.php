@@ -4,7 +4,11 @@ session_start();
  
 // menghubungkan php dengan koneksi database
 include 'assets/php/koneksi.php';
- 
+
+if(!isset($_SESSION['username'])){
+	header("Location: ../index.php");
+}
+
 // menangkap data yang dikirim dari form login
 $username = $_POST['username'];
 $password = $_POST['password'];
