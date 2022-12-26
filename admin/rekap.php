@@ -1,5 +1,9 @@
 <?php
-<<<<<<< HEAD
+session_start();
+
+if (!isset($_SESSION['username'])) {
+    header("Location: ../index.php");
+}
 include '../sub/head.php';
 include '../assets/php/koneksi.php';
 $dari = '';
@@ -12,16 +16,6 @@ if (!empty($_POST['dari']) && !empty($_POST['sampai'])) {
     $sqlperiode = "WHERE nota.tgl BETWEEN '" . $dari . "' AND '" . $sampai . "'";
 }
 ?>
-=======
-    session_start();
-
-    if(!isset($_SESSION['username'])){
-        header("Location: ../index.php");
-    }
-?>
-
-<?php include '../sub/head.php'; ?>
->>>>>>> 2811d18b15e7f68000fec5e899f796beafc76090
 
 <!-- Begin Page Content -->
 <div class="container-fluid">
