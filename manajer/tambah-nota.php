@@ -1,4 +1,12 @@
 <?php
+    session_start();
+
+    if(!isset($_SESSION['username'])){
+        header("Location: ../index.php");
+    }
+?>
+
+<?php
     include '../sub/head.php';
     include '../assets/php/koneksi.php';
 ?>
@@ -9,7 +17,7 @@
     <h1 class="h3 mb-4 text-gray-800">Form Tambah Nota Barang</h1>
     <div class="card shadow mb-4">
         <div class="card-body">
-            <form method="post" action="../assets/php/nota/aksi-tambah.php" enctype="multipart/form-data">
+            <form method="post" action="../assets/php/nota/aksi-tambah.php" enctype="multipart/form-data" class="hitung">
                 <input type="hidden" value="<?php echo $_GET['id-proyek']?>" name="id_proyek">
                 <div class="form-group row">
                     <label for="level" class="col-sm-2 col-form-label">Kategori</label>
@@ -68,7 +76,8 @@
                 <div class="form-group row">
                     <label for="biayapengeluaran" class="col-sm-2 col-form-label">Biaya Pengeluaran</label>
                     <div class="col-sm-10">
-                        <input type="number" class="form-control" id="biayapengeluaran" name="biaya_pengeluaran" placeholder="input biaya pengeluaran">
+                        <input type="number" class="form-control" id="biayapengeluaran" name="biaya_pengeluaran"
+                            placeholder="input biaya pengeluaran">
                     </div>
                 </div>
                 <div class="form-group row">
@@ -86,7 +95,7 @@
                 <div class="form-group row">
                     <label for="scannota" class="col-sm-2 col-form-label">Scan Nota</label>
                     <input type="file" id="scannota" name="foto">
-                    <p style="color: red" >Ekstensi yang diperbolehkan .png | .jpg | .jpeg | .gif</p>
+                    <p style="color: red">Ekstensi yang diperbolehkan .png | .jpg | .jpeg | .gif</p>
                 </div>
             <input type="submit" class="btn btn-primary" style="float: right;" value="Simpan">
             </form>

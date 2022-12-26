@@ -1,10 +1,19 @@
 <?php
+    session_start();
+
+    if(!isset($_SESSION['username'])){
+        header("Location: ../index.php");
+    }
+?>
+
+<?php
 include '../sub/head.php';
 include '../assets/php/koneksi.php';
-
 // GET DETAIL NOTA
 $id_nota = $_GET['id-nota'];
 $id_proyek = $_GET['id-proyek'];
+$detail = mysqli_query($koneksi,"SELECT * FROM nota WHERE id_nota = '$id_nota'");
+$d = mysqli_fetch_array($detail);
 ?>
 
 <!-- Begin Page Content -->
@@ -32,41 +41,41 @@ $id_proyek = $_GET['id-proyek'];
                 <div class="form-group row">
                     <label class="col-sm-3 col-form-label">Uraian</label>
                     <div class="col-sm-9">
-                        <input type="text" class="form-control" id="nilai" value="uraian nota" autocomplete="off" disabled>
+                        <input type="text" class="form-control" id="nilai" value="<?php echo $d['uraian'] ?>" autocomplete="off" disabled>
                     </div>
                 </div>
                 <div class="form-group row">
                     <label class="col-sm-3 col-form-label">Unit</label>
                     <div class="col-sm-3">
-                        <input type="text" class="form-control" value="unit" autocomplete="off" disabled>
+                        <input type="text" class="form-control" value="<?php echo $d['unit'] ?>" autocomplete="off" disabled>
                     </div>
                     <label class="col-sm-2 col-form-label">Satuan</label>
                     <div class="col-sm-4">
-                        <input type="text" class="form-control" value="satuan" autocomplete="off" disabled>
+                        <input type="text" class="form-control" value="<?php echo $d['satuan'] ?>" autocomplete="off" disabled>
                     </div>
                 </div>
                 <div class="form-group row">
                     <label class="col-sm-3 col-form-label">Harga Satuan</label>
                     <div class="col-sm-9">
-                        <input type="text" class="form-control" value="harga satuan" autocomplete="off" disabled>
+                        <input type="text" class="form-control" value="<?php echo $d['harga_satuan'] ?>" autocomplete="off" disabled>
                     </div>
                 </div>
                 <div class="form-group row">
                     <label class="col-sm-3 col-form-label">Total</label>
                     <div class="col-sm-9">
-                        <input type="text" class="form-control" value="total" autocomplete="off" disabled>
+                        <input type="text" class="form-control" value="<?php echo $d['biaya_pengeluaran'] ?>" autocomplete="off" disabled>
                     </div>
                 </div>
                 <div class="form-group row">
                     <label class="col-sm-3 col-form-label">Keterangan</label>
                     <div class="col-sm-9">
-                        <input type="text" class="form-control" value="keterangan" autocomplete="off" disabled>
+                        <input type="text" class="form-control" value="<?php echo $d['keterangan'] ?>" autocomplete="off" disabled>
                     </div>
                 </div>
                 <div class="form-group row">
                     <label class="col-sm-3 col-form-label">Pekerjaan</label>
                     <div class="col-sm-9">
-                        <input type="text" class="form-control" value="pekerjaan" autocomplete="off" disabled>
+                        <input type="text" class="form-control" value="<?php echo $d['pekerjaan'] ?>" autocomplete="off" disabled>
                     </div>
                 </div>
             </div>

@@ -1,4 +1,12 @@
 <?php
+    session_start();
+
+    if(!isset($_SESSION['username'])){
+        header("Location: ../index.php");
+    }
+?>
+
+<?php
 include '../sub/head.php';
 include '../assets/php/koneksi.php';
 // GET DETAIL PROYEK
@@ -105,40 +113,47 @@ $d = mysqli_fetch_array($proyek);
                     <tbody>
                     <?php
                         $no = 1;
-                        $data = mysqli_query($koneksi, "SELECT * FROM nota");
-                        while ($d = mysqli_fetch_array($data)) {
+                        $id = $_GET['id-proyek'];
+                        $total = 0;
+                        $data = mysqli_query($koneksi, "SELECT * FROM nota_proyek
+                                JOIN nota ON nota.id_nota=nota_proyek.id_nota WHERE id_proyek='$id'");
+                        while ($dt = mysqli_fetch_array($data)) {
                         ?>
                         <tr>
                             <td><?php echo $no++; ?></td>
-                            <td><?php echo $d['uraian'] ?></td>
-                            <td><?php echo $d['biaya_pengeluaran'] ?></td>
-                            <td><?php echo $d['keterangan'] ?></td>
+                            <td><?php echo $dt['uraian'] ?></td>
+                            <td align="right"><?php echo number_format($dt['biaya_pengeluaran'], 0, ',', '.') ?></td>
+                            <td><?php echo $dt['keterangan'] ?></td>
                             <td>
-                                <a href="edit-nota.php?id-proyek=<?= $id ?>&id-nota=<?= $d['id_nota']; ?>" class="btn btn-warning btn-circle">
+                                <a href="edit-nota.php?id-proyek=<?= $id ?>&id-nota=<?= $dt['id_nota']; ?>" class="btn btn-warning btn-circle">
                                     <i class="fa-regular fa-pen-to-square"></i>
                                 </a>
-                                <a href="../assets/php/nota/aksi-hapus.php?id-proyek=<?= $id ?>&id-nota=<?= $d['id_nota']; ?>" class="btn btn-danger btn-circle">
+                                <a href="../assets/php/nota/aksi-hapus.php?id-proyek=<?= $id ?>&id-nota=<?= $dt['id_nota']; ?>" class="btn btn-danger btn-circle">
                                     <i class="fa-solid fa-trash-can"></i>
                                 </a>
-                                <a href="detail-nota.php?id-proyek=<?= $id ?>&id-nota=<?= $n['id_nota']; ?>" class="btn btn-info btn-circle">
+                                <a href="detail-nota.php?id-proyek=<?= $id ?>&id-nota=<?= $dt['id_nota']; ?>" class="btn btn-info btn-circle">
                                     <i class="fa-solid fa-info"></i>
                                 </a>
                             </td>
                         </tr>
+                        <?php $total += $dt['biaya_pengeluaran']; ?>
                         <?php } ?>
                     </tbody>
                     <tfoot>
                         <tr>
                             <th colspan="3">Total Biaya Pengeluaran</th>
-                            <th colspan="2"></th>
+                            <td align="right" colspan="2"><?php echo number_format($total, 0, ',', '.') ?></td>
                         </tr>
                         <tr>
-                            <th colspan="3">Sumber Dana / Nilai Kontrak</th>
-                            <th colspan="2"></th>
+                            <th colspan="3">Nilai Kontrak</th>
+                            <td align="right" colspan="2"><?php echo number_format($d['nilai_kontrak'], 0, ',', '.') ?></td>
                         </tr>
                         <tr>
                             <th colspan="3">Sisa</th>
-                            <th colspan="2"></th>
+                            <?php
+                                $sisa = $d['nilai_kontrak'] - $total;
+                            ?>
+                            <td align="right" colspan="2"><?php echo number_format($sisa, 0, ',', '.') ?></td>
                         </tr>
                     </tfoot>
                 </table>

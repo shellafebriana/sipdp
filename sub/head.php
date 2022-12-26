@@ -24,7 +24,6 @@
 </head>
 
 <body id="page-top">
-
     <!-- Page Wrapper -->
     <div id="wrapper">
 
@@ -47,7 +46,7 @@
                     <i class="fas fa-fw fa-tachometer-alt"></i>
                     <span>Dashboard</span></a>
             </li>
-
+        <?php if($_SESSION['level_user']=="Admin"){ ?>
             <!-- Divider -->
             <hr class="sidebar-divider">
 
@@ -55,21 +54,18 @@
             <div class="sidebar-heading">
                 Features
             </div>
-
             <!-- Nav Item - Proyek -->
             <li class="nav-item">
                 <a class="nav-link" href="#">
                     <i class="fa-solid fa-fw fa-sheet-plastic"></i>
                     <span>Proyek</span></a>
             </li>
-
             <!-- Nav Item - Rekap -->
             <li class="nav-item">
                 <a class="nav-link" href="#">
                     <i class="fa-regular fa-fw fa-chart-bar"></i>
                     <span>Rekap </span></a>
             </li>
-
             <!-- Divider -->
             <hr class="sidebar-divider">
 
@@ -105,10 +101,38 @@
             <div class="text-center d-none d-md-inline">
                 <button class="rounded-circle border-0" id="sidebarToggle"></button>
             </div>
+        <?php }elseif($_SESSION['level_user']=="Manajer"){?>
+            <!-- Nav Item - Proyek -->
+            <li class="nav-item">
+                <a class="nav-link" href="#">
+                    <i class="fa-solid fa-fw fa-sheet-plastic"></i>
+                    <span>Proyek</span></a>
+            </li>
+            <!-- Divider -->
+            <hr class="sidebar-divider d-none d-md-block">
 
+            <!-- Sidebar Toggler (Sidebar) -->
+            <div class="text-center d-none d-md-inline">
+                <button class="rounded-circle border-0" id="sidebarToggle"></button>
+            </div>
+        <?php }elseif($_SESSION['level_user']=="Bos"){ ?>
+            <!-- Nav Item - Rekap -->
+            <li class="nav-item">
+                <a class="nav-link" href="#">
+                    <i class="fa-regular fa-fw fa-chart-bar"></i>
+                    <span>Rekap </span></a>
+            </li>
+            <!-- Divider -->
+            <hr class="sidebar-divider d-none d-md-block">
+
+            <!-- Sidebar Toggler (Sidebar) -->
+            <div class="text-center d-none d-md-inline">
+                <button class="rounded-circle border-0" id="sidebarToggle"></button>
+            </div>
+        <?php } ?>
         </ul>
         <!-- End of Sidebar -->
-
+        
         <!-- Content Wrapper -->
         <div id="content-wrapper" class="d-flex flex-column">
 

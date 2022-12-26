@@ -1,4 +1,12 @@
 <?php
+    session_start();
+
+    if(!isset($_SESSION['username'])){
+        header("Location: ../index.php");
+    }
+?>
+
+<?php
 include '../sub/head.php';
 include '../assets/php/koneksi.php';
 

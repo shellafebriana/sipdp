@@ -1,4 +1,12 @@
 <?php
+    session_start();
+
+    if(!isset($_SESSION['username'])){
+        header("Location: ../index.php");
+    }
+?>
+
+<?php
 include '../sub/head.php';
 ?>
 
@@ -23,7 +31,7 @@ include '../sub/head.php';
                 <div class="form-group row">
                     <label for="sumber" class="col-sm-3 col-form-label">Sumber Dana</label>
                     <div class="col-sm-9">
-                        <input type="number" class="form-control" id="sumber" name="sumber_dana" placeholder="input sumber dana" autocomplete="off">
+                        <input type="text" class="form-control" id="sumber" name="sumber_dana" placeholder="input sumber dana" autocomplete="off">
                     </div>
                 </div>
                 <div class="form-group row">
