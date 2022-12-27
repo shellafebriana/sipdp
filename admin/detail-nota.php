@@ -35,7 +35,7 @@ $d = mysqli_fetch_array($detail);
     <div class="card shadow mt-4 mb-4">
         <div class="card-body row">
             <div class="col-xl-6 mb-4">
-                <img src="../assets/img/nota/contoh_nota.jpg" alt="Contoh nota">
+                <img src="../assets/img/nota/<?php echo $d['gmbr_nota'] ?>" alt="Contoh nota" width="400px">
             </div>
             <div class="col-xl-6 mb-4">
                 <div class="form-group row">
@@ -57,13 +57,13 @@ $d = mysqli_fetch_array($detail);
                 <div class="form-group row">
                     <label class="col-sm-3 col-form-label">Harga Satuan</label>
                     <div class="col-sm-9">
-                        <input type="text" class="form-control" value="<?php echo $d['harga_satuan'] ?>" autocomplete="off" disabled>
+                        <input type="text" class="form-control" value="Rp. <?php echo number_format($d['harga_satuan'], 0, ',', '.') ?>" autocomplete="off" disabled>
                     </div>
                 </div>
                 <div class="form-group row">
                     <label class="col-sm-3 col-form-label">Total</label>
                     <div class="col-sm-9">
-                        <input type="text" class="form-control" value="<?php echo $d['biaya_pengeluaran'] ?>" autocomplete="off" disabled>
+                        <input type="text" class="form-control" value="Rp. <?php echo number_format($d['biaya_pengeluaran'], 0, ',', '.') ?>" autocomplete="off" disabled>
                     </div>
                 </div>
                 <div class="form-group row">
