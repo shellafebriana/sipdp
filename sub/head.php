@@ -48,93 +48,107 @@
                     <i class="fas fa-fw fa-tachometer-alt"></i>
                     <span>Dashboard</span></a>
             </li>
-        <?php if($_SESSION['level_user']=="Admin"){ ?>
-            <!-- Divider -->
-            <hr class="sidebar-divider">
+            <?php if ($_SESSION['level_user'] == "Admin") { ?>
+                <!-- Divider -->
+                <hr class="sidebar-divider">
 
-            <!-- Heading -->
-            <div class="sidebar-heading">
-                Features
-            </div>
-            <!-- Nav Item - Proyek -->
-            <li class="nav-item">
-                <a class="nav-link" href="#">
-                    <i class="fa-solid fa-fw fa-sheet-plastic"></i>
-                    <span>Proyek</span></a>
-            </li>
-            <!-- Nav Item - Rekap -->
-            <li class="nav-item">
-                <a class="nav-link" href="#">
-                    <i class="fa-regular fa-fw fa-chart-bar"></i>
-                    <span>Rekap </span></a>
-            </li>
-            <!-- Divider -->
-            <hr class="sidebar-divider">
+                <!-- Heading -->
+                <div class="sidebar-heading">
+                    Features
+                </div>
+                <!-- Nav Item - Proyek -->
+                <li class="nav-item">
+                    <a class="nav-link" href="../admin/proyek.php">
+                        <i class="fa-solid fa-fw fa-sheet-plastic"></i>
+                        <span>Proyek</span></a>
+                </li>
+                <!-- Nav Item - Rekap -->
+                <li class="nav-item">
+                    <a class="nav-link" href="../admin/rekap.php">
+                        <i class="fa-regular fa-fw fa-chart-bar"></i>
+                        <span>Rekap </span></a>
+                </li>
+                <!-- Divider -->
+                <hr class="sidebar-divider">
 
-            <!-- Heading -->
-            <div class="sidebar-heading">
-                Settings
-            </div>
+                <!-- Heading -->
+                <div class="sidebar-heading">
+                    Settings
+                </div>
 
-            <!-- Nav Item - User -->
-            <li class="nav-item">
-                <a class="nav-link" href="#">
-                    <i class="fa-solid fa-fw fa-users-line"></i>
-                    <span>User </span></a>
-            </li>
+                <!-- Nav Item - User -->
+                <li class="nav-item">
+                    <a class="nav-link" href="../admin/user.php">
+                        <i class="fa-solid fa-fw fa-users-line"></i>
+                        <span>User </span></a>
+                </li>
 
-            <!-- Nav Item - Kategori -->
-            <li class="nav-item">
-                <a class="nav-link" href="#">
-                    <i class="fa-solid fa-cube"></i>
-                    <span>Kategori </span></a>
-            </li>
+                <!-- Nav Item - Kategori -->
+                <li class="nav-item">
+                    <a class="nav-link" href="../admin/kategori.php">
+                        <i class="fa-solid fa-cube"></i>
+                        <span>Kategori </span></a>
+                </li>
 
-            <!-- Nav Item - Kode -->
-            <li class="nav-item">
-                <a class="nav-link" href="#">
-                    <i class="fa-solid fa-cubes"></i>
-                    <span>Kode </span></a>
-            </li>
-            <!-- Divider -->
-            <hr class="sidebar-divider d-none d-md-block">
+                <!-- Nav Item - Kode -->
+                <li class="nav-item">
+                    <a class="nav-link" href="../admin/kode.php">
+                        <i class="fa-solid fa-cubes"></i>
+                        <span>Kode </span></a>
+                </li>
+                <!-- Divider -->
+                <hr class="sidebar-divider d-none d-md-block">
 
-            <!-- Sidebar Toggler (Sidebar) -->
-            <div class="text-center d-none d-md-inline">
-                <button class="rounded-circle border-0" id="sidebarToggle"></button>
-            </div>
-        <?php }elseif($_SESSION['level_user']=="Manajer"){?>
-            <!-- Nav Item - Proyek -->
-            <li class="nav-item">
-                <a class="nav-link" href="#">
-                    <i class="fa-solid fa-fw fa-sheet-plastic"></i>
-                    <span>Proyek</span></a>
-            </li>
-            <!-- Divider -->
-            <hr class="sidebar-divider d-none d-md-block">
+                <!-- Sidebar Toggler (Sidebar) -->
+                <div class="text-center d-none d-md-inline">
+                    <button class="rounded-circle border-0" id="sidebarToggle"></button>
+                </div>
+            <?php } elseif ($_SESSION['level_user'] == "Manajer") { ?>
+                <!-- Divider -->
+                <hr class="sidebar-divider">
 
-            <!-- Sidebar Toggler (Sidebar) -->
-            <div class="text-center d-none d-md-inline">
-                <button class="rounded-circle border-0" id="sidebarToggle"></button>
-            </div>
-        <?php }elseif($_SESSION['level_user']=="Bos"){ ?>
-            <!-- Nav Item - Rekap -->
-            <li class="nav-item">
-                <a class="nav-link" href="#">
-                    <i class="fa-regular fa-fw fa-chart-bar"></i>
-                    <span>Rekap </span></a>
-            </li>
-            <!-- Divider -->
-            <hr class="sidebar-divider d-none d-md-block">
+                <!-- Heading -->
+                <div class="sidebar-heading">
+                    Features
+                </div>
+                <!-- Nav Item - Proyek -->
+                <li class="nav-item">
+                    <a class="nav-link" href="../manajer/proyek.php">
+                        <i class="fa-solid fa-fw fa-sheet-plastic"></i>
+                        <span>Proyek</span></a>
+                </li>
+                <!-- Divider -->
+                <hr class="sidebar-divider d-none d-md-block">
 
-            <!-- Sidebar Toggler (Sidebar) -->
-            <div class="text-center d-none d-md-inline">
-                <button class="rounded-circle border-0" id="sidebarToggle"></button>
-            </div>
-        <?php } ?>
+                <!-- Sidebar Toggler (Sidebar) -->
+                <div class="text-center d-none d-md-inline">
+                    <button class="rounded-circle border-0" id="sidebarToggle"></button>
+                </div>
+            <?php } elseif ($_SESSION['level_user'] == "Bos") { ?>
+                <!-- Divider -->
+                <hr class="sidebar-divider">
+
+                <!-- Heading -->
+                <div class="sidebar-heading">
+                    Features
+                </div>
+                <!-- Nav Item - Rekap -->
+                <li class="nav-item">
+                    <a class="nav-link" href="../bos/rekap.php">
+                        <i class="fa-regular fa-fw fa-chart-bar"></i>
+                        <span>Rekap </span></a>
+                </li>
+                <!-- Divider -->
+                <hr class="sidebar-divider d-none d-md-block">
+
+                <!-- Sidebar Toggler (Sidebar) -->
+                <div class="text-center d-none d-md-inline">
+                    <button class="rounded-circle border-0" id="sidebarToggle"></button>
+                </div>
+            <?php } ?>
         </ul>
         <!-- End of Sidebar -->
-        
+
         <!-- Content Wrapper -->
         <div id="content-wrapper" class="d-flex flex-column">
 
@@ -157,7 +171,7 @@
                         <!-- Nav Item - User Information -->
                         <li class="nav-item dropdown no-arrow">
                             <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <span class="mr-2 d-none d-lg-inline text-gray-600 small">Douglas McGee</span>
+                                <span class="mr-2 d-none d-lg-inline text-gray-600 small text-capitalize"><?= $_SESSION['username'] ?></span>
                                 <img class="img-profile rounded-circle" src="../assets/img/undraw_profile.svg">
                             </a>
                             <!-- Dropdown - User Information -->

@@ -1,12 +1,10 @@
 <?php
-    session_start();
+session_start();
 
-    if(!isset($_SESSION['username'])){
-        header("Location: ../index.php");
-    }
-?>
+if (!isset($_SESSION['username'])) {
+    header("Location: ../index.php");
+}
 
-<?php
 include '../sub/head.php';
 include '../assets/php/koneksi.php';
 // GET DETAIL PROYEK
@@ -21,11 +19,6 @@ $d = mysqli_fetch_array($proyek);
     <div class="d-sm-flex align-items-center justify-content-between mb-4">
         <h1 class="h3 mb-0 text-gray-800">Detail Proyek</h1>
         <div class="d-none d-sm-inline-block ">
-
-            <a href="tambah-nota.php?id-proyek=<?= $id ?>" class="btn btn-sm btn-primary shadow-sm">
-                <i class="fa-solid fa-plus fa-sm text-white-50"></i>
-                Tambah Nota
-            </a>
             <a href="proyek.php" class="btn btn-sm btn-danger shadow-sm">
                 <i class="fa-solid fa-caret-left"></i>
                 Kembali
@@ -111,7 +104,7 @@ $d = mysqli_fetch_array($proyek);
                         </tr>
                     </thead>
                     <tbody>
-                    <?php
+                        <?php
                         $no = 1;
                         $id = $_GET['id-proyek'];
                         $total = 0;
@@ -119,41 +112,35 @@ $d = mysqli_fetch_array($proyek);
                                 JOIN nota ON nota.id_nota=nota_proyek.id_nota WHERE id_proyek='$id'");
                         while ($dt = mysqli_fetch_array($data)) {
                         ?>
-                        <tr>
-                            <td><?php echo $no++; ?></td>
-                            <td><?php echo $dt['uraian'] ?></td>
-                            <td align="right"><?php echo number_format($dt['biaya_pengeluaran'], 0, ',', '.') ?></td>
-                            <td><?php echo $dt['keterangan'] ?></td>
-                            <td>
-                                <a href="edit-nota.php?id-proyek=<?= $id ?>&id-nota=<?= $dt['id_nota']; ?>" class="btn btn-warning btn-circle">
-                                    <i class="fa-regular fa-pen-to-square"></i>
-                                </a>
-                                <a href="../assets/php/nota/aksi-hapus.php?id-proyek=<?= $id ?>&id-nota=<?= $dt['id_nota']; ?>" class="btn btn-danger btn-circle">
-                                    <i class="fa-solid fa-trash-can"></i>
-                                </a>
-                                <a href="detail-nota.php?id-proyek=<?= $id ?>&id-nota=<?= $dt['id_nota']; ?>" class="btn btn-info btn-circle">
-                                    <i class="fa-solid fa-info"></i>
-                                </a>
-                            </td>
-                        </tr>
-                        <?php $total += $dt['biaya_pengeluaran']; ?>
+                            <tr>
+                                <td><?php echo $no++; ?></td>
+                                <td><?php echo $dt['uraian'] ?></td>
+                                <td class="text-right"><?php echo rupiah($dt['biaya_pengeluaran']) ?></td>
+                                <td><?php echo $dt['keterangan'] ?></td>
+                                <td>
+                                    <a href="detail-nota.php?id-proyek=<?= $id ?>&id-nota=<?= $dt['id_nota']; ?>" class="btn btn-info btn-circle">
+                                        <i class="fa-solid fa-info"></i>
+                                    </a>
+                                </td>
+                            </tr>
+                            <?php $total += $dt['biaya_pengeluaran']; ?>
                         <?php } ?>
                     </tbody>
                     <tfoot>
                         <tr>
                             <th colspan="3">Total Biaya Pengeluaran</th>
-                            <td align="right" colspan="2"><?php echo number_format($total, 0, ',', '.') ?></td>
+                            <th class="text-right" colspan="2"><?php echo rupiah($total) ?></th>
                         </tr>
                         <tr>
                             <th colspan="3">Nilai Kontrak</th>
-                            <td align="right" colspan="2"><?php echo number_format($d['nilai_kontrak'], 0, ',', '.') ?></td>
+                            <th class="text-right" colspan="2"><?php echo rupiah($d['nilai_kontrak']) ?></th>
                         </tr>
                         <tr>
                             <th colspan="3">Sisa</th>
                             <?php
-                                $sisa = $d['nilai_kontrak'] - $total;
+                            $sisa = $d['nilai_kontrak'] - $total;
                             ?>
-                            <td align="right" colspan="2"><?php echo number_format($sisa, 0, ',', '.') ?></td>
+                            <th class="text-right" colspan="2"><?php echo rupiah($sisa) ?></th>
                         </tr>
                     </tfoot>
                 </table>
