@@ -1,3 +1,16 @@
+<?php
+    error_reporting (E_ALL ^ E_NOTICE);
+    session_start();
+
+    if($_SESSION['level_user'] == "Admin"){
+        header("Location: admin/dashboard.php");
+    } elseif($_SESSION['level_user'] == "Manajer"){
+        header("Location: manajer/dashboard.php");
+    } elseif($_SESSION['level_user'] == "Bos"){
+        header("Location: bos/dashboard.php");
+    }else{
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -104,7 +117,6 @@
         </form>
     </div>
 </body>
-
-
-
 </html>
+
+<?php } ?>
