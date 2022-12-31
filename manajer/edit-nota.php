@@ -70,37 +70,37 @@
                 <div class="form-group row">
                     <label for="unit" class="col-sm-2 col-form-label">Unit</label>
                     <div class="col-sm-10">
-                        <input type="number" class="form-control" id="unit" name="unit" placeholder="input unit" value="<?php echo $d['unit'] ?>">
+                        <input type="number" class="form-control" id="unit" name="unit" value="<?php echo $d['unit'] ?>">
                     </div>
                 </div>
                 <div class="form-group row">
                     <label for="satuan" class="col-sm-2 col-form-label">Satuan</label>
                     <div class="col-sm-10">
-                        <input type="text" class="form-control" id="satuan" name="satuan" placeholder="input satuan" value="<?php echo $d['satuan'] ?>">
+                        <input type="text" class="form-control" id="satuan" name="satuan" value="<?php echo $d['satuan'] ?>">
                     </div>
                 </div>
                 <div class="form-group row">
                     <label for="hargasatuan" class="col-sm-2 col-form-label">Harga Satuan</label>
                     <div class="col-sm-10">
-                        <input type="number" class="form-control" id="hargasatuan" name="harga_satuan" placeholder="input harga satuan" value="<?php echo $d['harga_satuan'] ?>">
+                        <input type="number" class="form-control" id="hargasatuan" name="hargasatuan" value="<?php echo $d['harga_satuan'] ?>">
                     </div>
                 </div>
                 <div class="form-group row">
                     <label for="biayapengeluaran" class="col-sm-2 col-form-label">Biaya Pengeluaran</label>
                     <div class="col-sm-10">
-                        <input type="number" class="form-control" id="biayapengeluaran" name="biaya_pengeluaran" placeholder="input biaya pengeluaran" value="<?php echo $d['biaya_pengeluaran'] ?>">
+                        <input type="number" class="form-control" id="biayapengeluaran" name="biayapengeluaran" value="<?php echo $d['biaya_pengeluaran'] ?>">
                     </div>
                 </div>
                 <div class="form-group row">
                     <label for="pekerjaan" class="col-sm-2 col-form-label">Pekerjaan</label>
                     <div class="col-sm-10">
-                        <input type="text" class="form-control" id="pekerjaan" name="pekerjaan" placeholder="input pekerjaan" value="<?php echo $d['pekerjaan'] ?>">
+                        <input type="text" class="form-control" id="pekerjaan" name="pekerjaan" value="<?php echo $d['pekerjaan'] ?>">
                     </div>
                 </div>
                 <div class="form-group row">
                     <label for="keterangan" class="col-sm-2 col-form-label">Keterangan</label>
                     <div class="col-sm-10">
-                        <input type="text" class="form-control" id="keterangan" name="keterangan" placeholder="input keterangan" value="<?php echo $d['keterangan'] ?>">
+                        <input type="text" class="form-control" id="keterangan" name="keterangan" value="<?php echo $d['keterangan'] ?>">
                     </div>
                 </div>
                 <div class="form-group row">
