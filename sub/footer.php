@@ -32,7 +32,7 @@
             <div class="modal-body">Klik "Logout" jika kamu sudah yakin untuk mengakhiri sesi</div>
             <div class="modal-footer">
                 <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-                <a class="btn btn-primary" href="login.html">Logout</a>
+                <a class="btn btn-primary" href="../logout.php">Logout</a>
             </div>
         </div>
     </div>
@@ -68,6 +68,21 @@
                 $('#kode').html(response);
             }
         });
+    });
+
+    $("#unit").keyup(function(){
+        var a = parseInt($("#unit").val());
+        var b = parseInt($("#hargasatuan").val());
+        var c = a*b;
+        $("#biayapengeluaran").val(c);
+    });
+
+
+    $("#hargasatuan").keyup(function(){
+        var a = parseInt($("#unit").val());
+        var b = parseInt($("#hargasatuan").val());
+        var c = a*b;
+        $("#biayapengeluaran").val(c);
     });
 </script>
 </body>

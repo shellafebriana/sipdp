@@ -8,8 +8,8 @@
     $uraian = $_POST['uraian'];
     $unit = $_POST['unit'];
     $satuan = $_POST['satuan'];
-    $hargasatuan = $_POST['harga_satuan'];
-    $biayapengeluaran = $_POST['biaya_pengeluaran'];
+    $hargasatuan = $_POST['hargasatuan'];
+    $biayapengeluaran = $_POST['biayapengeluaran'];
     $pekerjaan = $_POST['pekerjaan'];
     $keterangan = $_POST['keterangan'];
 
@@ -29,7 +29,7 @@
                 '$unit','$satuan','$hargasatuan','$biayapengeluaran','$pekerjaan','$keterangan','$xx')");
                 $id_nota = mysqli_insert_id($koneksi);
                 mysqli_query($koneksi, "INSERT INTO nota_proyek VALUES ('','$id','$id_nota')");
-                header("location:../../../manajer/nota-proyek.php?id-proyek=$id&alert=berhasil");
+                header("location:../../../manajer/nota-proyek.php?id-proyek=$id&alert=berhasil_ditambah");
             }else{
                 header("location:../../../manajer/tambah-nota.php?id-proyek=$id&alert=gagal_ukuran");
             }

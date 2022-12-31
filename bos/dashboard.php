@@ -4,6 +4,17 @@
     if(!isset($_SESSION['username'])){
         header("Location: ../index.php");
     }
+
+    if($_SESSION['status']=="login"){
+        if($_SESSION['level_user'] != "Bos"){
+            echo "<script> alert('Maaf Anda tidak Memiliki HAK AKSES.')</script>";
+
+            if($_SESSION['level_user'] == "Admin"){
+                header("Location: ../admin/dashboard.php");
+            } else{
+                header("Location: ../manajer/dashboard.php");
+            }
+        }
 ?>
 
 <?php include '../sub/head.php'; ?>
@@ -20,3 +31,9 @@
 </div>
 <!-- End of Main Content -->
 <?php include '../sub/footer.php'; ?>
+
+<?php
+}else{
+    echo "Maaf Anda Belum Melakukan Login";
+}
+?>

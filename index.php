@@ -1,3 +1,16 @@
+<?php
+    error_reporting (E_ALL ^ E_NOTICE);
+    session_start();
+
+    if($_SESSION['level_user'] == "Admin"){
+        header("Location: admin/dashboard.php");
+    } elseif($_SESSION['level_user'] == "Manajer"){
+        header("Location: manajer/dashboard.php");
+    } elseif($_SESSION['level_user'] == "Bos"){
+        header("Location: bos/dashboard.php");
+    }else{
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -89,13 +102,6 @@
     </style>
 </head>
 <body>
-    <?php
-        if(isset($_GET['pesan'])){
-            if($_GET['pesan']=="gagal"){
-                echo "<div class='alert'>Username dan Password tidak sesuai !</div>";
-            }
-        }
-    ?>
     <div class="container">
         <form action="login.php" method="POST" class="login-username">
             <p class="login-text" style="font-size: 2rem; font-weight: 800;">Login</p>
@@ -111,7 +117,6 @@
         </form>
     </div>
 </body>
-
-
-
 </html>
+
+<?php } ?>
