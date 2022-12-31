@@ -70,13 +70,13 @@
                 <div class="form-group row">
                     <label for="hargasatuan" class="col-sm-2 col-form-label">Harga Satuan</label>
                     <div class="col-sm-10">
-                        <input type="number" class="form-control" id="hargasatuan" name="harga_satuan" placeholder="input harga satuan">
+                        <input type="number" class="form-control" id="hargasatuan" name="hargasatuan" placeholder="input harga satuan">
                     </div>
                 </div>
                 <div class="form-group row">
                     <label for="biayapengeluaran" class="col-sm-2 col-form-label">Biaya Pengeluaran</label>
                     <div class="col-sm-10">
-                        <input type="number" class="form-control" id="biayapengeluaran" name="biaya_pengeluaran"
+                        <input type="number" class="form-control" id="biayapengeluaran" name="biayapengeluaran"
                             placeholder="input biaya pengeluaran">
                     </div>
                 </div>

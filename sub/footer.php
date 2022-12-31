@@ -69,6 +69,21 @@
             }
         });
     });
+
+    $("#unit").keyup(function(){
+        var a = parseInt($("#unit").val());
+        var b = parseInt($("#hargasatuan").val());
+        var c = a*b;
+        $("#biayapengeluaran").val(c);
+    });
+
+
+    $("#hargasatuan").keyup(function(){
+        var a = parseInt($("#unit").val());
+        var b = parseInt($("#hargasatuan").val());
+        var c = a*b;
+        $("#biayapengeluaran").val(c);
+    });
 </script>
 </body>
 

@@ -8,8 +8,8 @@
     $uraian = $_POST['uraian'];
     $unit = $_POST['unit'];
     $satuan = $_POST['satuan'];
-    $hargasatuan = $_POST['harga_satuan'];
-    $biayapengeluaran = $_POST['biaya_pengeluaran'];
+    $hargasatuan = $_POST['hargasatuan'];
+    $biayapengeluaran = $_POST['biayapengeluaran'];
     $pekerjaan = $_POST['pekerjaan'];
     $keterangan = $_POST['keterangan'];
 
