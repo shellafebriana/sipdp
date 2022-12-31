@@ -29,7 +29,7 @@
                 '$unit','$satuan','$hargasatuan','$biayapengeluaran','$pekerjaan','$keterangan','$xx')");
                 $id_nota = mysqli_insert_id($koneksi);
                 mysqli_query($koneksi, "INSERT INTO nota_proyek VALUES ('','$id','$id_nota')");
-                header("location:../../../manajer/nota-proyek.php?id-proyek=$id&alert=berhasil");
+                header("location:../../../manajer/nota-proyek.php?id-proyek=$id&alert=berhasil_ditambah");
             }else{
                 header("location:../../../manajer/tambah-nota.php?id-proyek=$id&alert=gagal_ukuran");
             }

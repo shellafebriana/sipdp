@@ -10,4 +10,4 @@ $u =mysqli_fetch_array($i);
 // die;
 if(is_file("../../img/nota/".$u['gmbr_nota'])) unlink("../../img/nota/".$u['gmbr_nota']);
     mysqli_query($koneksi, "DELETE FROM nota WHERE id_nota ='$id_nota' ");
-    echo "<script>alert('Data berhasil dihapus!');window.location='../../../manajer/nota-proyek.php?id-proyek=$id&id-nota=$id_nota&alert=berhasilterhapus';</script>";
+    echo "<script>alert('Data berhasil dihapus!');window.location='../../../manajer/nota-proyek.php?id-proyek=$id&id-nota=$id_nota&alert=berhasil_dihapus';</script>";
