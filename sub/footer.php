@@ -2,7 +2,7 @@
 <footer class="sticky-footer bg-white">
     <div class="container my-auto">
         <div class="copyright text-center my-auto">
-            <span>Copyright &copy; Your Website 2020</span>
+            <span>Copyright &copy; 3121101181 - 3121101184 2023</span>
         </div>
     </div>
 </footer>
@@ -55,6 +55,11 @@
 <script src="../assets/vendor/datatables/jquery.dataTables.min.js"></script>
 <script src="../assets/vendor/datatables/dataTables.bootstrap4.min.js"></script>
 
+<!-- Page level plugins -->
+<script src="../assets/vendor/chart.js/Chart.min.js"></script>
+
+<!-- Page level custom scripts -->
+<script src="../assets/js/demo/chart-area-demo.js"></script>
 <!-- Page level custom scripts -->
 <script src="../assets/js/demo/datatables-demo.js"></script>
 <script type="text/javascript">
@@ -70,20 +75,28 @@
         });
     });
 
-    $("#unit").keyup(function(){
+    $("#unit").keyup(function() {
         var a = parseInt($("#unit").val());
         var b = parseInt($("#hargasatuan").val());
-        var c = a*b;
+        var c = a * b;
         $("#biayapengeluaran").val(c);
     });
 
 
-    $("#hargasatuan").keyup(function(){
+    $("#hargasatuan").keyup(function() {
         var a = parseInt($("#unit").val());
         var b = parseInt($("#hargasatuan").val());
-        var c = a*b;
+        var c = a * b;
         $("#biayapengeluaran").val(c);
     });
+
+    var ctx = document.getElementById('pendapatanAreaChart');
+    var data = {
+        label: ['Jan', 'Feb', 'Mar', 'Apr', 'Mei', 'Jun', 'Jul', 'Agu', 'Sep', 'Okt', 'Nov', 'Des'],
+        datasets: [{
+
+        }]
+    }
 </script>
 </body>
 
