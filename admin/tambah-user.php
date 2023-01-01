@@ -30,7 +30,6 @@ include '../sub/head.php';
                     <select class="form-control" name="level_user">
                         <option>Pilih User</option>
                         <option>Admin</option>
-                        <option>Manajer</option>
                         <option>Bos</option>
                     </select>
                 </div>
