@@ -29,14 +29,6 @@ if($cek > 0){
 		$_SESSION['level_user'] = "Admin";
 		// alihkan ke halaman dashboard admin
 		header("location: admin/dashboard.php");
- 
-	// cek jika user login sebagai pegawai
-	}else if($data['level_user']=="Manajer"){
-		// buat session login dan username
-		$_SESSION['username'] = $username;
-		$_SESSION['level_user'] = "Manajer";
-		// alihkan ke halaman dashboard pegawai
-		header("location: manajer/dashboard.php");
 
 	// cek jika user login sebagai pengurus
 	}else if($data['level_user']=="Bos"){
