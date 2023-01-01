@@ -45,7 +45,7 @@ if (!empty($_POST['dari']) && !empty($_POST['sampai'])) {
                 <div class="col-sm-4 mb-3">
                     <a href="../assets/php/rekap/print-rekap.php?tgl-awal=<?= $dari ?>&tgl-akhir=<?= $sampai ?>" class="btn btn-primary mr-2" style="float:right" target="_blank"><i class="fa-solid fa-print"></i></a>
                     <a href="../assets/php/rekap/excel-rekap.php?tgl-awal=<?= $dari ?>&tgl-akhir=<?= $sampai ?>" class="btn btn-success mr-2" style="float:right" target="_blank"><i class="fa-solid fa-file-excel"></i></a>
-                    <a href="#" class="btn btn-danger mr-2" style="float:right"><i class="fa-solid fa-file-pdf"></i></a>
+                    <a href="../assets/php/rekap/pdf-rekap.php?tgl-awal=<?= $dari ?>&tgl-akhir=<?= $sampai ?>" class="btn btn-danger mr-2" style="float:right" target="_blank"><i class="fa-solid fa-file-pdf"></i></a>
                 </div>
 
             </div>
