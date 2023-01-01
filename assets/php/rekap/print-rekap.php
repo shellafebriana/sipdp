@@ -48,32 +48,52 @@ $sampai = $_GET['tgl-akhir'];
 
                         <h5 class="font-weight-bolder">Periode <?= tgl_indo($dari) ?> s/d <?= tgl_indo($sampai) ?></h5>
                     </center>
-                    <table class="table table-bordered" width="100%" cellspacing="0">
-                        <thead>
-                            <tr class="thead text-uppercase">
-                                <th>No</th>
-                                <th>Jenis</th>
-                                <th>Kode</th>
-                                <th>Uraian Nota</th>
-                                <th>Unit</th>
-                                <th>Satuan</th>
-                                <th>Keterangan</th>
-                                <th>Pekerjaan</th>
-                                <th>Harga Satuan</th>
-                                <th>Biaya Pengeluaran</th>
+                    <?php
+                    $sqlp = "SELECT proyek.id_proyek, nm_kegiatan, waktu_pelaksanaan, nilai_kontrak FROM nota JOIN nota_proyek ON nota_proyek.id_nota = nota.id_nota JOIN proyek ON nota_proyek.id_proyek = proyek.id_proyek WHERE nota.tgl BETWEEN '" . $dari . "' AND '" . $sampai . "' group by  nm_kegiatan";
+                    $total = 0;
+                    $sisa = 0;
+                    $data = mysqli_query($koneksi, $sqlp);
+                    while ($p = mysqli_fetch_array($data)) {
+                    ?>
+                        <table>
+                            <tr>
+                                <td>
+                                    <h6>Nama Proyek</h6>
+                                </td>
+                                <td>:</td>
+                                <td><?= $p['nm_kegiatan'] ?></td>
                             </tr>
-                        </thead>
-                        <tbody>
-                            <?php
-                            $sqlp = "SELECT proyek.id_proyek, nm_kegiatan FROM nota JOIN nota_proyek ON nota_proyek.id_nota = nota.id_nota JOIN proyek ON nota_proyek.id_proyek = proyek.id_proyek WHERE nota.tgl BETWEEN '" . $dari . "' AND '" . $sampai . "' group by  nm_kegiatan";
-                            $total = 0;
-                            $sisa = 0;
-                            $data = mysqli_query($koneksi, $sqlp);
-                            while ($p = mysqli_fetch_array($data)) {
-                            ?>
-                                <tr class="text-uppercase">
-                                    <td colspan="10" class="font-weight-bold">Nama Proyek : <?= $p['nm_kegiatan'] ?></td>
+                            <tr>
+                                <td>
+                                    <h6>Waktu Pelaksanaan</h6>
+                                </td>
+                                <td>:</td>
+                                <td><?= tgl_indo($p['waktu_pelaksanaan']) ?></td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <h6>Nilai Kontrak</h6>
+                                </td>
+                                <td>:</td>
+                                <td><?= rupiah($p['nilai_kontrak']) ?></td>
+                            </tr>
+                        </table>
+                        <table class="table table-bordered" width="100%" cellspacing="0">
+                            <thead>
+                                <tr class="thead text-uppercase">
+                                    <th>No</th>
+                                    <th>Jenis</th>
+                                    <th>Kode</th>
+                                    <th>Uraian Nota</th>
+                                    <th>Unit</th>
+                                    <th>Satuan</th>
+                                    <th>Keterangan</th>
+                                    <th>Pekerjaan</th>
+                                    <th>Harga Satuan</th>
+                                    <th>Biaya Pengeluaran</th>
                                 </tr>
+                            </thead>
+                            <tbody>
                                 <?php
                                 $no = 1;
                                 $subtotal = 0;
@@ -104,10 +124,13 @@ $sampai = $_GET['tgl-akhir'];
                                     <td class="font-weight-bold"><?= rupiah($subtotal); ?></td>
                                 </tr>
                             <?php
-                                $total += $subtotal;
-                                $sisa += $subsisa;
-                            }
+                            $total += $subtotal;
+                            $sisa += $subsisa;
+                        }
                             ?>
+                            </tbody>
+                        </table>
+                        <table class="table table-bordered" width="100%" cellspacing="0">
                             <tr>
                                 <td colspan="9" class="font-weight-bold text-uppercase">Total Pengeluaran </td>
                                 <td class="font-weight-bold"><?= rupiah($total) ?></td>
@@ -116,8 +139,7 @@ $sampai = $_GET['tgl-akhir'];
                                 <td colspan="9" class="font-weight-bold text-uppercase">Sisa </td>
                                 <td class="font-weight-bold"><?= rupiah($sisa) ?></td>
                             </tr>
-                        </tbody>
-                    </table>
+                        </table>
                 </div>
             </div>
         </div>
