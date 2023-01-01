@@ -72,7 +72,6 @@ if (!empty($_POST['dari']) && !empty($_POST['sampai'])) {
                         $no = 1;
                         $total = 0;
                         $sisa = 0;
-                        $subsisa = 0;
                         $sql = "SELECT * FROM nota JOIN nota_proyek ON nota_proyek.id_nota = nota.id_nota JOIN proyek ON nota_proyek.id_proyek = proyek.id_proyek JOIN kategori_nota ON kategori_nota.id_kategori = nota.id_kategori JOIN kode ON kode.id_kode = nota.id_kode $sqlperiode group by nota.id_nota";
                         $data = mysqli_query($koneksi, $sql);
                         while ($d = mysqli_fetch_array($data)) {
@@ -92,9 +91,9 @@ if (!empty($_POST['dari']) && !empty($_POST['sampai'])) {
 
                         <?php
                             $total += $d['biaya_pengeluaran'];
-                            $subsisa = $d['nilai_kontrak'] - $total;
                         }
-                        $sisa += $subsisa;
+                        $dana = mysqli_fetch_array(mysqli_query($koneksi, "SELECT sum(nilai_kontrak) as dana FROM proyek WHERE waktu_pelaksanaan BETWEEN '" . $dari . "' AND '" . $sampai . "'"));
+                        $sisa = $dana['dana'] - $total;
                         ?>
                         <tr>
                             <td colspan="9" class="font-weight-bold text-uppercase">Total Pengeluaran </td>
