@@ -6,7 +6,7 @@ session_start();
 include 'assets/php/koneksi.php';
 
 if(!isset($_SESSION['username'])){
-	header("Location: ../index.php");
+	header("Location: index.php");
 }
 
 // menangkap data yang dikirim dari form login
@@ -28,7 +28,7 @@ if($cek > 0){
 		$_SESSION['username'] = $username;
 		$_SESSION['level_user'] = "Admin";
 		// alihkan ke halaman dashboard admin
-		header("<script>alert('Data berhasil dihapus!');window.location='admin/dashboard.php';</script>");
+		header("location: admin/dashboard.php");
  
 	// cek jika user login sebagai pegawai
 	}else if($data['level_user']=="Manajer"){
@@ -36,7 +36,7 @@ if($cek > 0){
 		$_SESSION['username'] = $username;
 		$_SESSION['level_user'] = "Manajer";
 		// alihkan ke halaman dashboard pegawai
-		header("<script>alert('Data berhasil dihapus!');window.location='manajer/dashboard.php';</script>");
+		header("location: manajer/dashboard.php");
 
 	// cek jika user login sebagai pengurus
 	}else if($data['level_user']=="Bos"){
@@ -44,7 +44,7 @@ if($cek > 0){
 		$_SESSION['username'] = $username;
 		$_SESSION['level_user'] = "Bos";
 		// alihkan ke halaman dashboard pengurus
-		header("<script>alert('Data berhasil dihapus!');window.location='bos/dashboard.php';</script>");
+		header("location: bos/dashboard.php");
 
 	}else{
 		// alihkan ke halaman login kembali
