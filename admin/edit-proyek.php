@@ -1,9 +1,9 @@
 <?php
-    session_start();
+session_start();
 
-    if(!isset($_SESSION['username'])){
-        header("Location: ../index.php");
-    }
+if (!isset($_SESSION['username'])) {
+    header("Location: ../index.php");
+}
 ?>
 
 <?php
@@ -16,7 +16,15 @@ $d = mysqli_fetch_array($data);
 
 <div class="container-fluid">
     <!-- Page Heading -->
-    <h1 class="h3 mb-4 text-gray-800">Form Edit Proyek</h1>
+    <div class="d-sm-flex align-items-center justify-content-between mb-4">
+        <h1 class="h3 mb-0 text-gray-800">Form Edit Proyek</h1>
+        <div class="d-none d-sm-inline-block ">
+            <a href="proyek.php" class="btn btn-sm btn-danger shadow-sm">
+                <i class="fa-solid fa-caret-left"></i>
+                Kembali
+            </a>
+        </div>
+    </div>
     <div class="card shadow mb-4">
         <div class="card-body">
             <form action="../assets/php/proyek/aksi-edit.php" method="POST">

@@ -45,15 +45,15 @@
 
             if($sql){ // Cek jika proses simpan ke database sukses atau tidak
                 // Jika Sukses, Lakukan :
-                header("location: ../../../manajer/nota-proyek.php?id-proyek=$id&id-nota=$id_nota&alert=berhasil"); // Redirect ke halaman index.php
+                header("location: ../../../admin/nota-proyek.php?id-proyek=$id&id-nota=$id_nota&alert=berhasil"); // Redirect ke halaman index.php
             }else{
                 // Jika Gagal, Lakukan :
-                echo "<script>alert('Maaf, Terjadi kesalahan saat mencoba untuk menyimpan data.');window.location='../../../manajer/edit_nota.php?id-proyek=$id&id-nota=$id_nota&alert=tidakberhasil';</script>";
+                echo "<script>alert('Maaf, Terjadi kesalahan saat mencoba untuk menyimpan data.');window.location='../../../admin/edit_nota.php?id-proyek=$id&id-nota=$id_nota&alert=tidakberhasil';</script>";
             }
         }else{
             // Jika gambar gagal diupload, Lakukan :
             echo   "<script> alert('Maaf, Gambar gagal untuk diupload'); 
-                    location = '../../../manajer/edit_nota.php?id-proyek=$id&id-nota=$id_nota&alert=tidakberhasil'; 
+                    location = '../../../admin/edit_nota.php?id-proyek=$id&id-nota=$id_nota&alert=tidakberhasil'; 
                     </script>";
         }
     }else{ // Jika user tidak menceklis checkbox yang ada di form ubah, lakukan :
@@ -67,10 +67,9 @@
         // die;
         if($sql){ // Cek jika proses simpan ke database sukses atau tidak
             // Jika Sukses, Lakukan :
-            header("location: ../../../manajer/nota-proyek.php?id-proyek=$id&id-nota=$id_nota&alert=berhasil"); // Redirect ke halaman index.php
+            header("location: ../../../admin/nota-proyek.php?id-proyek=$id&id-nota=$id_nota&alert=berhasil"); // Redirect ke halaman index.php
         }else{
             // Jika Gagal, Lakukan :
-            echo "<script>alert('Maaf, Terjadi kesalahan saat mencoba untuk menyimpan data.');window.location='../../../manajer/edit-nota.php?id-proyek=$id&id-nota=$id_nota&alert=tidakberhasil';</script>";
+            echo "<script>alert('Maaf, Terjadi kesalahan saat mencoba untuk menyimpan data.');window.location='../../../admin/edit-nota.php?id-proyek=$id&id-nota=$id_nota&alert=tidakberhasil';</script>";
         }
     }
-?>

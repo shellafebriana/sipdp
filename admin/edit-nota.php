@@ -1,47 +1,53 @@
 <?php
-    session_start();
+session_start();
 
-    if(!isset($_SESSION['username'])){
-        header("Location: ../index.php");
-    }
+if (!isset($_SESSION['username'])) {
+    header("Location: ../index.php");
+}
 ?>
 
 <?php
-    include '../sub/head.php';
-    include '../assets/php/koneksi.php';
-    $id = $_GET['id-nota'];
-    $data = mysqli_query($koneksi,"SELECT * FROM nota JOIN kode ON nota.id_kode = kode.id_kode WHERE id_nota='$id'");
-    $d = mysqli_fetch_array($data);
+include '../sub/head.php';
+include '../assets/php/koneksi.php';
+$id = $_GET['id-nota'];
+$data = mysqli_query($koneksi, "SELECT * FROM nota JOIN kode ON nota.id_kode = kode.id_kode WHERE id_nota='$id'");
+$d = mysqli_fetch_array($data);
 ?>
 
 <!-- Begin Page Content -->
 <div class="container-fluid">
     <!-- Page Heading -->
-    <h1 class="h3 mb-4 text-gray-800">Form Edit Nota Barang</h1>
+    <div class="d-sm-flex align-items-center justify-content-between mb-4">
+        <h1 class="h3 mb-0 text-gray-800">Form Edit Nota Barang</h1>
+        <div class="d-none d-sm-inline-block ">
+            <a href="nota-proyek.php?id-proyek=<?php echo $_GET['id-proyek'] ?>" class="btn btn-sm btn-danger shadow-sm">
+                <i class="fa-solid fa-caret-left"></i>
+                Kembali
+            </a>
+        </div>
+    </div>
     <div class="card shadow mb-4">
         <div class="card-body">
             <form method="post" action="../assets/php/nota/aksi-edit.php" enctype="multipart/form-data">
-                <input type="hidden" value="<?php echo $_GET['id-proyek']?>" name="id_proyek">
-                <input type="hidden" value="<?php echo $_GET['id-nota']?>" name="id_nota">
+                <input type="hidden" value="<?php echo $_GET['id-proyek'] ?>" name="id_proyek">
+                <input type="hidden" value="<?php echo $_GET['id-nota'] ?>" name="id_nota">
                 <input type="hidden" name="id_kategori">
                 <input type="hidden" name="id_kode">
                 <div class="form-group row">
                     <label for="level" class="col-sm-2 col-form-label">Kategori</label>
                     <div class="col-sm-10">
                         <select class="form-control" id="kategori" name="id_kategori">
-                        <option>Pilih Kategori</option>
+                            <option>Pilih Kategori</option>
                             <?php
-                                // include '../assets/php/koneksi.php';
-                                $dk = mysqli_query($koneksi,"SELECT * FROM kategori_nota");
-                                while ($k = mysqli_fetch_array($dk)){
+                            // include '../assets/php/koneksi.php';
+                            $dk = mysqli_query($koneksi, "SELECT * FROM kategori_nota");
+                            while ($k = mysqli_fetch_array($dk)) {
                             ?>
-                            <option value="<?php echo $k['id_kategori'] ?>"
-                                    <?php
-                                        if ($k['id_kategori'] == $d['id_kategori']){
-                                            echo "selected";
-                                        }
-                                    ?>
-                            ><?php echo $k['nm_kategori'] ?></option>
+                                <option value="<?php echo $k['id_kategori'] ?>" <?php
+                                                                                if ($k['id_kategori'] == $d['id_kategori']) {
+                                                                                    echo "selected";
+                                                                                }
+                                                                                ?>><?php echo $k['nm_kategori'] ?></option>
                             <?php } ?>
                         </select>
                     </div>
@@ -64,7 +70,7 @@
                 <div class="form-group row">
                     <label for="uraian" class="col-sm-2 col-form-label">Uraian</label>
                     <div class="col-sm-10">
-                        <input type="text" class="form-control" id="uraian" name="uraian" value="<?=$d['uraian'] ?>">
+                        <input type="text" class="form-control" id="uraian" name="uraian" value="<?= $d['uraian'] ?>">
                     </div>
                 </div>
                 <div class="form-group row">
@@ -109,10 +115,10 @@
                     <div class="col-sm-10">
                         <input type="checkbox" name="ubah_foto" value="true"> Ceklis jika ingin mengubah foto<br>
                         <input type="file" id="scannota" name="foto" class="form-control">
-                        <p style="color: red" >Ekstensi yang diperbolehkan .png | .jpg | .jpeg | .pdf</p>
-                        </div>
+                        <p style="color: red">Ekstensi yang diperbolehkan .png | .jpg | .jpeg | .pdf</p>
+                    </div>
                 </div>
-            <input type="submit" class="btn btn-primary" style="float: right;" value="Simpan">
+                <input type="submit" class="btn btn-primary" style="float: right;" value="Simpan">
             </form>
         </div>
     </div>
@@ -124,5 +130,5 @@
 
 
 <?php
-    include '../sub/footer.php';
+include '../sub/footer.php';
 ?>

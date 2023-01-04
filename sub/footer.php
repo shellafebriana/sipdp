@@ -56,10 +56,10 @@
 <script src="../assets/vendor/datatables/dataTables.bootstrap4.min.js"></script>
 
 <!-- Page level plugins -->
-<script src="../assets/vendor/chart.js/Chart.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
 <!-- Page level custom scripts -->
-<script src="../assets/js/demo/chart-area-demo.js"></script>
+<!-- <script src="../assets/js/demo/chart-area-demo.js"></script> -->
 <!-- Page level custom scripts -->
 <script src="../assets/js/demo/datatables-demo.js"></script>
 <script type="text/javascript">
@@ -89,14 +89,47 @@
         var c = a * b;
         $("#biayapengeluaran").val(c);
     });
+    const ctx = document.getElementById('pendapatanAreaChart');
 
-    var ctx = document.getElementById('pendapatanAreaChart');
-    var data = {
-        label: ['Jan', 'Feb', 'Mar', 'Apr', 'Mei', 'Jun', 'Jul', 'Agu', 'Sep', 'Okt', 'Nov', 'Des'],
-        datasets: [{
-
-        }]
-    }
+    <?php
+    // include '../assets/php/koneksi.php';
+    $p = mysqli_query($koneksi, "SELECT COALESCE (pengeluaran,0) as pengeluaran, dana, (dana - COALESCE (pengeluaran,0)) as pendapatan, tabel_dana.bulan FROM ( SELECT SUM(biaya_pengeluaran) as pengeluaran, MONTH(nota.tgl) as bulan FROM nota GROUP BY MONTH(nota.tgl) ) as tabel_pengeluaran RIGHT JOIN ( SELECT SUM(nilai_kontrak) as dana, MONTH(waktu_pelaksanaan) as bulan FROM proyek GROUP BY MONTH(waktu_pelaksanaan) ) as tabel_dana ON tabel_pengeluaran.bulan = tabel_dana.bulan");
+    ?>
+    new Chart(ctx, {
+        type: 'line',
+        data: {
+            labels: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
+            datasets: [{
+                label: 'pendapatan',
+                lineTension: 0.3,
+                backgroundColor: "rgba(78, 115, 223, 0.05)",
+                borderColor: "rgba(78, 115, 223, 1)",
+                pointRadius: 3,
+                pointBackgroundColor: "rgba(78, 115, 223, 1)",
+                pointBorderColor: "rgba(78, 115, 223, 1)",
+                pointHoverRadius: 3,
+                pointHoverBackgroundColor: "rgba(78, 115, 223, 1)",
+                pointHoverBorderColor: "rgba(78, 115, 223, 1)",
+                pointHitRadius: 10,
+                pointBorderWidth: 2,
+                data: [
+                    <?php
+                    while ($data = mysqli_fetch_array($p)) {
+                        echo $data['pendapatan'] . ',';
+                    }
+                    ?>
+                ],
+                borderWidth: 1
+            }]
+        },
+        options: {
+            scales: {
+                y: {
+                    beginAtZero: true
+                }
+            }
+        }
+    });
 </script>
 </body>
 

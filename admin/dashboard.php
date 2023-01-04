@@ -123,8 +123,8 @@ if ($_SESSION['status'] == "login") {
             </div>
             <!-- Card Body -->
             <div class="card-body">
-                <div class="chart-area">
-                    <canvas id="myAreaChart"></canvas>
+                <div class="chart-area ml-5">
+                    <canvas id="pendapatanAreaChart" width="1500" height="500"></canvas>
                 </div>
             </div>
         </div>

@@ -61,10 +61,10 @@ while ($p = mysqli_fetch_array($data)) {
         ->setCellValue('J' . $i, $p['harga_satuan'])
         ->setCellValue('K' . $i, $p['biaya_pengeluaran']);
     $total += $p['biaya_pengeluaran'];
-    $subsisa = $p['nilai_kontrak'] - $total;
     $i++;
 };
-$sisa += $subsisa;
+$dana = mysqli_fetch_array(mysqli_query($koneksi, "SELECT sum(nilai_kontrak) as dana FROM proyek WHERE waktu_pelaksanaan BETWEEN '" . $dari . "' AND '" . $sampai . "'"));
+$sisa = $dana['dana'] - $total;
 
 // set auto filter
 $firstRow = 6;
