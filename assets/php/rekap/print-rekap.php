@@ -125,8 +125,9 @@ $sampai = $_GET['tgl-akhir'];
                                 </tr>
                             <?php
                             $total += $subtotal;
-                            $sisa += $subsisa;
                         }
+                        $dana = mysqli_fetch_array(mysqli_query($koneksi, "SELECT sum(nilai_kontrak) as dana FROM proyek WHERE waktu_pelaksanaan BETWEEN '" . $dari . "' AND '" . $sampai . "'"));
+                        $sisa = $dana['dana'] - $total;
                             ?>
                             </tbody>
                         </table>

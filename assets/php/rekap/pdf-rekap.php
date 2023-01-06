@@ -144,8 +144,9 @@ while ($p = mysqli_fetch_array($data)) {
         <td style="font-weight: bold;">' . rupiah($subtotal) . '</td>
     </tr></tbody></table>';
     $total += $subtotal;
-    $sisa += $subsisa;
 }
+$dana = mysqli_fetch_array(mysqli_query($koneksi, "SELECT sum(nilai_kontrak) as dana FROM proyek WHERE waktu_pelaksanaan BETWEEN '" . $dari . "' AND '" . $sampai . "'"));
+$sisa = $dana['dana'] - $total;
 $html .= '
 <table class="table table-bordered" width="100%" cellspacing="0">
     <tr>
